@@ -18,7 +18,10 @@ export class CriarPensamentoComponent implements OnInit {
   }
 
   cancelarPensamento() {
-    alert('Pensamento cancelado. ');
+    this.pensamento.conteudo = '';
+    this.pensamento.autoria = '';
+    this.pensamento.modelo = '';
+    alert('Pensamento cancelado. Retorne ao ócio! ');
   }
 
   constructor() {}

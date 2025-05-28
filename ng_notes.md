@@ -167,3 +167,39 @@
     - 1W binding: ` value =  {{ pensamento.id }}`
     - 2W binding: `[(ngMode)] = 'pensamento.conteudo'`
   - O evento input do DOM é disparado sincronicamente quando o valor (`value`) de um elemento \<input\>, \<select\>, ou \<textarea\> é alterado.
+
+# Aula 3
+
+- **Arquivo de rotas**
+  - configura as mudanças de tela/apresentação da aplicação
+  - define rotas entre componentes
+  - `app-routing.module.ts`
+    - definir pares path-component.
+    - o "path" é a url inserida no browser, excluindo o endereço do root
+      - end. completo: `http://127.0.0.1:4200/a/b/c/`
+      - url: `/a/b/c/`
+    - a propriedade pathMatch define o critério de comparação:
+      - `pathMatch: 'prefix'` (default): considera match se primeiro elemento da url for igual, logo, /a/b/c/ = /a/b/d/
+      - `pathMatch: 'full'`: considera match se string completa for igual, logo, /a/b/c/ != /a/b/d/
+      - o path vazio ('') é prefixo de TODAS as urls. se usado. usar match 'full' para o path vazio.
+      ```
+      const routes: Routes = [
+      {
+          path: '',
+          redirectTo: 'criar-pensamento',
+      }
+      {
+          path: 'criar-pensamento',
+          component: CriarPensamentoComponent,
+      },
+      {
+          path: 'listar-pensamento',
+          component: ListarPensamentosComponent,
+      },
+      ];
+      ```
+  - `routerLink` propriedade que transforma elem. html em âncora para outro path. e.g. abaixo redir. para url root/p1/. Parece com href, mas não induz refresh da página, que deve ser evitado para SPA (single page app).
+  ```
+  <button routerLink='p1'>Meu botão</button>
+  ```
+  `- routerLinkActive`: diretiva. usada como propriedade em um elemento html que contenha a diretiva `routerLink`. define uma classe css que será adicionada ao elemento quando seu link estiver ativo.
