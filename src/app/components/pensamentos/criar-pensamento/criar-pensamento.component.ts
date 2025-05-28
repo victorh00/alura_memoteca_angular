@@ -14,12 +14,10 @@ export class CriarPensamentoComponent implements OnInit {
   };
 
   criarPensamento() {
-    alert('Novo pensamento criado! ');
+    alert(`Novo pensamento criado usando o ${this.pensamento.modelo}`);
   }
 
   cancelarPensamento() {
-    this.pensamento.conteudo = '';
-    this.pensamento.autoria = '';
     alert('Pensamento cancelado. ');
   }
 
