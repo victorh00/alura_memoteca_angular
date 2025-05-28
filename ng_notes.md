@@ -171,6 +171,7 @@
 # Aula 3
 
 - **Arquivo de rotas**
+
   - configura as mudanças de tela/apresentação da aplicação
   - define rotas entre componentes
   - `app-routing.module.ts`
@@ -199,7 +200,24 @@
       ];
       ```
   - `routerLink` propriedade que transforma elem. html em âncora para outro path. e.g. abaixo redir. para url root/p1/. Parece com href, mas não induz refresh da página, que deve ser evitado para SPA (single page app).
+
   ```
   <button routerLink='p1'>Meu botão</button>
   ```
-  `- routerLinkActive`: diretiva. usada como propriedade em um elemento html que contenha a diretiva `routerLink`. define uma classe css que será adicionada ao elemento quando seu link estiver ativo.
+
+  - `routerLinkActive`: diretiva. usada como propriedade em um elemento html que contenha a diretiva `routerLink`. define uma classe css que será adicionada ao elemento quando seu link estiver ativo.
+
+  ```
+    <a routerLink="/home" routerLinkActive="ativo">Home</a>
+    <a routerLink="/sobre" routerLinkActive="ativo">Sobre</a>
+
+    // tendo os estilos abaixo
+
+    .ativo {
+    font-weight: bold;
+    color: blue;
+    }
+    .logo.active {
+        padding-bottom: 13px;
+    }
+  ```
