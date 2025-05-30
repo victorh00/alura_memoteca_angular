@@ -221,3 +221,12 @@
         padding-bottom: 13px;
     }
   ```
+
+# Aula 4
+
+...
+transmissão de dados entre componentes
+listar pensamentos atuando como componente-pai, e pensamento, como componente filho.
+
+no componente filho,
+põe @Input() na propriedade que vai receber info de fora

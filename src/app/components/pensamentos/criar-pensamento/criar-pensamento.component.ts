@@ -1,3 +1,25 @@
+/**
+ * @component CriarPensamentoComponent
+ * @description
+ * Componente responsável pelo formulário de criação de pensamento.
+ * @#todo
+ * @example
+ * <app-nome-do-componente [input]="valor"></app-nome-do-componente>
+ *
+ * @inputs
+ * - input1: Tipo - Descrição do input
+ * - input2: Tipo - Descrição do input
+ *
+ * @outputs
+ * - output1: EventEmitter<Tipo> - Descrição do evento emitido
+ *
+ * @usage
+ * Este componente é usado para [explicação do uso].
+ *
+ * @author Seu Nome
+ * @date 2025-05-30
+ */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
