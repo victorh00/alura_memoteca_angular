@@ -225,26 +225,62 @@
 # Aula 4
 
 - **Diretivas**
+
   - Instruções que alteram o comportamento ou a aparência de elementos no DOM.
   - Tipos
-    - Estruturais 
+    - Estruturais
       - Alteram a **estrutura** do DOM (adicionam, removem ou substituem elementos)
-      - Prefixo comum: *
+      - Prefixo comum: \*
       - `*ngIf`: adiciona ou remove elementos conforme uma condição.
       - `*ngFor`: repete um elemento para cada item de uma lista.
       - `*ngSwitch`: renderiza elementos com base em múltiplas condições.
-    - De atributo: 
+    - De atributo:
     - Personalizadas:
 
 - **Diretiva \*ngFor**
-  - Diretiva estrutural: modifica a estrutura do DOM 
-  - Serve para repetir um elemento do template para cada item de uma coleção
 
+  - Repete um elemento do template para cada item do iterável
+  - Usado em uma div que contenha tag de template
+  - Recebe uma expressão como argumento
+  - O iterável (listaPensamentos) é um objeto do component.ts
+  - O item pode ser nomeado como preferir
+  - Inicialmente, temos:
+    ```
+    <div *ngFor="let item of listaPensamentos">
+      <app-pensamento></app-pensamento>
+    </div>
+    ```
+  - Pensamento representa um card único de pensamento. Para que o \*ngFor faça aja, preciso que Pensamento assuma os valores dos "itens".
+  - O template do PensamentoComponent é apenas um card, que apresenta os dados do objeto interno Pensamento.
+  - Para ocorrer a iteração, é necessário um property binding que faça o objeto pensamento receber os dados dos _itens_ para cada iteração. Marco o que vai receber itens com @Input():
+    ```
+    @Input() pensamento = {
+      conteudo: 'I love Angular!!!',
+      autoria: 'Google',
+      modelo: 'modelo3',
+    };
+    ```
+  - E faço bind dessa propriedade
+    ```
+    <div \*ngFor="let item of listaPensamentos">
+      <app-pensamento [pensamento] = "item"></app-pensamento>
+    </div>
+    ```
+  - Dessa forma, logo depois que o HTML for renderizado com os dados iniciais do PensamentoComponent, o DOM será modificado pelo \*ngFor e receberá todos os elementos encontrados no iterável.
 
+- **Smart e Dumb Components**
 
-...
-transmissão de dados entre componentes
-listar pensamentos atuando como componente-pai, e pensamento, como componente filho.
+  - Como o PensamentoComponent é substituido e recebe todos os dados de fora, é chamado de Dumb/Presentational/Isolated Component. = Componente Filho, recebe @Input() na propriedade.
+  - ListarPensamentos, nesse caso, funciona como Smart Component, pois seria responsável pela manipulação de dados, interagir com serviços etc. Componente pai, vai no template e sofre ação do \*ngFor.
+  - [Smart Components vs Presentational Components](https://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/)
 
-no componente filho,
-põe @Input() na propriedade que vai receber info de fora
+- **Diretiva \*ngIf**
+  - Quando aplicado em um elemento HTML, este só será apresentado quando atendido o critério.
+  - Recebe expressão booleana.
+  ```
+  <div class="mural" *ngIf="listaPensamentos.length > 0">
+    <div \*ngFor="let item of listaPensamentos">
+      <app-pensamento [pensamento] = "item"></app-pensamento>
+    </div>
+  </div>
+  ```
