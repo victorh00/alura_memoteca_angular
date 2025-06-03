@@ -224,6 +224,24 @@
 
 # Aula 4
 
+- **Diretivas**
+  - Instruções que alteram o comportamento ou a aparência de elementos no DOM.
+  - Tipos
+    - Estruturais 
+      - Alteram a **estrutura** do DOM (adicionam, removem ou substituem elementos)
+      - Prefixo comum: *
+      - `*ngIf`: adiciona ou remove elementos conforme uma condição.
+      - `*ngFor`: repete um elemento para cada item de uma lista.
+      - `*ngSwitch`: renderiza elementos com base em múltiplas condições.
+    - De atributo: 
+    - Personalizadas:
+
+- **Diretiva \*ngFor**
+  - Diretiva estrutural: modifica a estrutura do DOM 
+  - Serve para repetir um elemento do template para cada item de uma coleção
+
+
+
 ...
 transmissão de dados entre componentes
 listar pensamentos atuando como componente-pai, e pensamento, como componente filho.
