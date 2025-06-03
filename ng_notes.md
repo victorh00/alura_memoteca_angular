@@ -277,10 +277,10 @@
 - **Diretiva \*ngIf**
   - Quando aplicado em um elemento HTML, este só será apresentado quando atendido o critério.
   - Recebe expressão booleana.
-  ```
-  <div class="mural" *ngIf="listaPensamentos.length > 0">
-    <div \*ngFor="let item of listaPensamentos">
-      <app-pensamento [pensamento] = "item"></app-pensamento>
+    ```
+    <div class="mural" *ngIf="listaPensamentos.length > 0">
+      <div \*ngFor="let item of listaPensamentos">
+        <app-pensamento [pensamento] = "item"></app-pensamento>
+      </div>
     </div>
-  </div>
-  ```
+    ```
