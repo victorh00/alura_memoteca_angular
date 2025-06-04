@@ -315,3 +315,105 @@
 
     <div [ngClass]="getClasses()">Texto</div>
     ```
+
+# Aula 5
+
+- **Simular backend**
+
+  - JSON server usado para simular API
+    - `mkdir ./backend`
+    - `cd backend`
+    - instalar: `npm i json-server@0.17.4`
+      - criadas:
+        - /node_modules
+        - package.json
+        - package-lock.json
+    - criar arquivo que simula base de dados com todos os endpoints da aplicação: `db.json`
+      ```
+      {
+        "pensamentos": [
+          {
+            "id": 1, "conteudo": "a", "autoria": "e", "modelo": "modelo1"
+          },
+          {
+            "id": 2, "conteudo": "b", "autoria": "f", "modelo": "modelo2"
+          },
+          {
+            "id": 3, "conteudo": "c", "autoria": "g", "modelo": "modelo3"
+          },
+        ]
+      }
+      ```
+    - configurar comando de execução: - no package.json do backend:
+      `"scripts": {"start": "json-server --watch db.json --po rt 3000"}`
+    - executar backend: `cd backend`; `npm start`
+
+- Obs.: erro de certicado (self signed certificate)
+
+  - ocorre ao rodar npm install
+  - `npm config get registry` ver registry atualmente cadastrado
+  - `npm config get cafile` ver arquivo de certs atualmente cadastrado
+  - `curl -v <registry bb>`ver detalhes do registry, incluindo local do arquivo de certs
+  - `npm config set registry` definir registry dominio público ou privado
+  - `npm config set cafile <path>` definir uso do arquivo de certs. permite self signed certs.
+
+- **Interfaces**
+
+  - Serve para definir a forma (estrutura) de um objeto. Não vira código JavaScript depois da transpilação — é só usada em tempo de desenvolvimento para ajudar com a tipagem. Não tem lógica ou comportamento, apenas define propriedades e seus tipos.
+  - Obs.: Interface VS Classe VS Enum
+
+    - Interface: e.g.
+
+      ```
+      interface Pensamento {
+        id: number;
+        conteudo: string;
+        autoria: string;
+        modelo: string;
+      }
+      ```
+
+    - Classe: Define estrutura e comportamento (métodos). Pode ser instanciada com new. Vira código JavaScript e pode conter lógica, construtores, herança etc.
+
+      ```
+      class Pensamento {
+      constructor(
+        public id: number,
+        public conteudo: string,
+        public autoria: string,
+        public modelo: string
+      ) {}
+
+        exibirResumo() {
+          return `${this.conteudo} - ${this.autoria}`;
+        }
+      }
+      ```
+
+    - Enum: Define um conjunto de valores nomeados (constantes). Usado quando você quer limitar os valores possíveis de uma variável.
+      ```
+      enum Modelo {
+        Clássico = 'modelo1',
+        Moderno = 'modelo2',
+        Abstrato = 'modelo3'
+      }
+      ```
+
+- **Services**
+
+  - Def.: é uma classe que encapsula lógica de negócios, comunicação com APIs, manipulação de dados ou qualquer funcionalidade reutilizável que não está diretamente relacionada à exibição da interface do usuário (UI).
+  - Criar:
+    ```
+    ng generate service <path>
+    ou
+    ng g s <path>
+    ```
+    - são gerados `pensamento.service.spec.ts` e `pensamento.service.ts`
+  - `pensamento.service.ts` -`@Injectable` classe pode ser usada em outros componentes/classes através de injeção de dependências.
+    - `providedIn: 'root'` serviço disponível a partir da raiz, i.e., em todo o projeto. Apenas uma instância do serviço em todo o projeto = Singleton. Todos os elementos dependentes acessem uma única instância compartilhada.
+    - Existem outros tipos mas não vem ao caso agora.
+    - no projeto,
+
+- **Injeção de dependências**
+  - A injeção acontece via construtor onde especificamos um parâmetro com o tipo da dependência e ao, colocar o modificador de acesso private, fazemos com que esse atributo seja automaticamente declarado como atributo dessa classe.
+  -
