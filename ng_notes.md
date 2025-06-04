@@ -234,8 +234,13 @@
       - `*ngIf`: adiciona ou remove elementos conforme uma condição.
       - `*ngFor`: repete um elemento para cada item de uma lista.
       - `*ngSwitch`: renderiza elementos com base em múltiplas condições.
-    - De atributo:
-    - Personalizadas:
+    - De atributo
+      - Altera a aparência ou o comportamento de um elemento, componente ou outra diretiva.
+      - `ngClass`: adiciona classes condicionalmente
+      - `ngStyle`: adiciona estilos condicionalmente
+    - Personalizadas
+      - Criadas pelo usuário para qualquer fim.
+      - Os seletores dos componentes são diretivas personalizadas com template associado!
 
 - **Diretiva \*ngFor**
 
@@ -275,12 +280,38 @@
   - [Smart Components vs Presentational Components](https://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/)
 
 - **Diretiva \*ngIf**
+
   - Quando aplicado em um elemento HTML, este só será apresentado quando atendido o critério.
   - Recebe expressão booleana.
     ```
-    <div class="mural" *ngIf="listaPensamentos.length > 0">
+    <div class="mural" *ngIf="listaPensamentos.length > 0; else #listaVazia">
       <div \*ngFor="let item of listaPensamentos">
         <app-pensamento [pensamento] = "item"></app-pensamento>
       </div>
     </div>
+    ```
+  - o caso else é escrito em um ng-template e marcado com #AlgumaCoisa, e.g. listaVazia.
+
+- **Diretiva ngClass**
+
+  - Aplica uma classe a um elemento html condicionalmente.
+  - No .html, aplico na tag que quero que varie conforme condição de variável do .ts
+    ```
+    <div
+    class="pensamento {{ pensamento.modelo }} ff-roboto-mono"
+    [ngClass]="larguraPensamento()"
+    >
+    ```
+  - Sintaxe
+
+    ```
+    <div [ngClass]="['classe1', 'classe2']">Texto</div>
+
+    ou
+
+    <div [ngClass]="{'classe1': condicao1, 'classe2': condicao2}">Texto</div>
+
+    ou
+
+    <div [ngClass]="getClasses()">Texto</div>
     ```
