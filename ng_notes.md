@@ -404,16 +404,27 @@
   - Def.: é uma classe que encapsula lógica de negócios, comunicação com APIs, manipulação de dados ou qualquer funcionalidade reutilizável que não está diretamente relacionada à exibição da interface do usuário (UI).
   - Criar:
     ```
-    ng generate service <path>
+    ng generate service <path/name>
     ou
-    ng g s <path>
+    ng g s <path/name>
     ```
-    - são gerados `pensamento.service.spec.ts` e `pensamento.service.ts`
-  - `pensamento.service.ts` -`@Injectable` classe pode ser usada em outros componentes/classes através de injeção de dependências.
-    - `providedIn: 'root'` serviço disponível a partir da raiz, i.e., em todo o projeto. Apenas uma instância do serviço em todo o projeto = Singleton. Todos os elementos dependentes acessem uma única instância compartilhada.
+    - são gerados `name.service.spec.ts` e `name.service.ts`
+  - `name.service.ts` 
+  -`@Injectable` classe que pode ser usada em outros componentes/classes através de injeção de dependências.
+    - `providedIn: 'root'` serviço disponível a partir da raiz, i.e., em todo o projeto. Apenas uma instância do serviço em todo o projeto = **Singleton**. Todos os elementos dependentes acessam uma única instância compartilhada.
     - Existem outros tipos mas não vem ao caso agora.
-    - no projeto,
+    - Para o projeto buscar pensamentos do backend, é necessário fazer uma requisição http.
+    - Muitos serviços são utilizados instanciando um objeto e acionando seus métodos. Nesse caso, cada solicitação em cada componente gera uma instância diferente do serviço.
+    - Com a injeção de dependência, o Angular gere uma única instância do serviço, que é usada em todas as chamadas.
 
 - **Injeção de dependências**
-  - A injeção acontece via construtor onde especificamos um parâmetro com o tipo da dependência e ao, colocar o modificador de acesso private, fazemos com que esse atributo seja automaticamente declarado como atributo dessa classe.
-  -
+  - A injeção acontece via construtor onde especificamos um parâmetro com o tipo da dependência: `constructor(private http: HttpClient)`
+  - Ao colocar o modificador de acesso private, fazemos com que esse atributo seja automaticamente declarado como atributo dessa classe.
+  
+# Aula 6
+
+- **Requisições Http com HttpClient**
+  - `return this.http.get<Pensamento[]>(this.API_URL);`
+
+- **Observables**
+  - 

@@ -31,9 +31,9 @@ import { Pensamento } from '../pensamento';
 export class PensamentoComponent implements OnInit {
   @Input() pensamento: Pensamento = {
     id: 0,
-    conteudo: 'I love Angular!!!',
-    autoria: 'Google',
-    modelo: 'modelo3',
+    conteudo: 'dumbComponent',
+    autoria: 'dumbComponent',
+    modelo: 'dumbComponent',
   };
 
   constructor() {}
