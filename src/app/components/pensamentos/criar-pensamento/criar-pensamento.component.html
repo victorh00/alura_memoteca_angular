@@ -97,26 +97,22 @@
           <p class="autoria">{{ pensamento.autoria }}</p>
         </div>
       </div>
-
-      <div class="acoes">
-        <button
-          (click)="criarPensamento()"
-          routerLink="/pensamentos"
-          class="botao"
-        >
-          Salvar
-        </button>
-        <button
-          (click)="cancelarPensamento()"
-          routerLink="/pensamentos"
-          class="botao"
-        >
-          Cancelar
-        </button>
-        <button class="botao" routerLink="/pensamentos">
-          Mural de Pensamentos
-        </button>
-      </div>
+    </div>
+    <div class="acoes">
+      <button
+        (click)="criarPensamento()"
+        routerLink="/pensamentos"
+        class="botao"
+      >
+        Salvar
+      </button>
+      <button
+        (click)="cancelarPensamento()"
+        routerLink="/pensamentos"
+        class="botao"
+      >
+        Cancelar
+      </button>
     </div>
   </form>
 </section>
