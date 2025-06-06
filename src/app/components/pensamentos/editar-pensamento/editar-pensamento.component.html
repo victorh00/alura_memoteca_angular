@@ -1,9 +1,6 @@
-<section class="container criar-pensamentos ff-inter">
+<section class="container editar-pensamentos ff-inter">
   <header class="header">
-    <h2>
-      Adicione um <br />
-      pensamento novo:
-    </h2>
+    <h2>Edite o seu pensamento<br /></h2>
   </header>
   <form>
     <label for="pensamento">Pensamento</label>
@@ -100,14 +97,14 @@
 
       <div class="acoes">
         <button
-          (click)="criarPensamento()"
+          (click)="editarPensamento()"
           routerLink="/pensamentos"
           class="botao"
         >
           Salvar
         </button>
         <button
-          (click)="cancelarPensamento()"
+          (click)="cancelarEdicao()"
           routerLink="/pensamentos"
           class="botao"
         >

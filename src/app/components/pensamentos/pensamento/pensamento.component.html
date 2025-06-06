@@ -11,13 +11,19 @@
     <b>{{ pensamento.autoria }}</b>
   </p>
   <div class="acoes">
-    <button class="botao-editar">
+    <button
+      class="botao-editar"
+      routerLink="/pensamentos/editar-pensamento/{{ pensamento.id }}"
+    >
       <img
         src="../../../../assets/imagens/icone-editar.png"
         alt="Editar pensamento"
       />
     </button>
-    <button class="botao-excluir">
+    <button
+      class="botao-excluir"
+      routerLink="/pensamentos/excluir-pensamento/{{ pensamento.id }}"
+    >
       <img
         src="../../../../assets/imagens/icone-excluir.png"
         alt="Excluir pensamento"

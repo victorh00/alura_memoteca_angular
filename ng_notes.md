@@ -409,8 +409,7 @@
     ng g s <path/name>
     ```
     - são gerados `name.service.spec.ts` e `name.service.ts`
-  - `name.service.ts` 
-  -`@Injectable` classe que pode ser usada em outros componentes/classes através de injeção de dependências.
+  - `name.service.ts` -`@Injectable` classe que pode ser usada em outros componentes/classes através de injeção de dependências.
     - `providedIn: 'root'` serviço disponível a partir da raiz, i.e., em todo o projeto. Apenas uma instância do serviço em todo o projeto = **Singleton**. Todos os elementos dependentes acessam uma única instância compartilhada.
     - Existem outros tipos mas não vem ao caso agora.
     - Para o projeto buscar pensamentos do backend, é necessário fazer uma requisição http.
@@ -418,13 +417,43 @@
     - Com a injeção de dependência, o Angular gere uma única instância do serviço, que é usada em todas as chamadas.
 
 - **Injeção de dependências**
-  - A injeção acontece via construtor onde especificamos um parâmetro com o tipo da dependência: `constructor(private http: HttpClient)`
+  - A injeção acontece via construtor onde especificamos um parâmetro com o tipo da dependência:
+    - `constructor(private http: HttpClient)`
+    - `constructor(private service: PensamentoService)`
+    - `constructor(private router: Router)`
+  - N serviços podem ser injetados no construtor: `constructor(private service: PensamentoService, private router: Router)`
   - Ao colocar o modificador de acesso private, fazemos com que esse atributo seja automaticamente declarado como atributo dessa classe.
-  
+    ```
+      class Exemplo {
+        private router: Router;
+        constructor(router: Router) { this.router = router; }
+      }
+    ```
+    - Se não usar `private`, o Angular ainda injeta a dependência corretamente (porque ele vê o tipo Router), mas não terei acesso a ela dentro da classe (não posso usar `this.router`), porque nenhum atributo foi criado.
+
 # Aula 6
 
 - **Requisições Http com HttpClient**
+
   - `return this.http.get<Pensamento[]>(this.API_URL);`
 
 - **Observables**
-  - 
+
+  - [ref](https://v17.angular.io/guide/observables-in-angular)
+  - Ferramenta para lidar com respostas assíncronas, assim como promises/async/await no js, mas com funcionamento e propósito diferentes.
+
+- **Routing com injeção do Router module**
+
+  - É possível navegar através do atributo `routerLink` no botão html.
+  - Outra forma é usar o método `navigate` do módulo `@angular/router`.
+    ```
+    criarPensamento() {
+      //alert(`Novo pensamento criado usando o ${this.pensamento.modelo}`);
+      this.service.criar(this.pensamento).subscribe(() => {
+        this.router.navigate(['/listar-pensamento']);
+      });
+    }
+    ```
+
+- **ActivatedRoute**
+  - Não sei.

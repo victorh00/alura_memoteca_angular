@@ -1,28 +1,10 @@
 {
   "pensamentos": [
     {
-      "id": 1,
-      "conteudo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dignissim odio, et placerat sapien maximus sit amet. In hac habitasse platea dictumst.",
-      "autoria": "João",
-      "modelo": "modelo1"
-    },
-    {
       "id": 2,
-      "conteudo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dignissim odio, et placerat sapien maximus sit amet. In hac habitasse platea dictumst.",
-      "autoria": "Maria",
+      "conteudo": "verde",
+      "autoria": "e",
       "modelo": "modelo3"
-    },
-    {
-      "id": 3,
-      "conteudo": "Suspendisse ut lorem sit amet dolor interdum scelerisque et tempor erat. Donec convallis metus ut sollicitudin blandit. Fusce eu diam a nulla congue dictum nec non dui. Praesent lacus risus, tempor id odio et, rutrum dictum diam. Curabitur id cursus nibh. Nam egestas placerat lorem et semper. Donec dictum, lacus ac bibendum maximus, sem neque vulputate purus, et sodales ligula purus id lacus. Mauris magna est, maximus non ultrices ut, iaculis ut felis. Aliquam vulputate, lorem at tincidunt bibendum, diam turpis hendrerit massa, et dictum ex urna non nulla.",
-      "autoria": "José",
-      "modelo": "modelo2"
-    },
-    {
-      "id": 4,
-      "conteudo": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed facilisis dignissim odio, et placerat sapien maximus sit amet. In hac habitasse platea dictumst.",
-      "autoria": "Filomena",
-      "modelo": "modelo1"
     }
   ]
 }
